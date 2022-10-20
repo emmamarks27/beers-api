@@ -5,6 +5,6 @@ const breweriesRouter = require('./routes/breweryRoutes');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/breweries', breweryRoutes);
+app.use('/breweries', breweriesRouter);
 
 module.exports = app;

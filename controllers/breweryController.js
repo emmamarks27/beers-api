@@ -1,4 +1,4 @@
-const Brewery = require('../modes/BreweryModel');
+const Brewery = require('../models/BreweryModel');
 
 const index = (req, res) => {
   try {
