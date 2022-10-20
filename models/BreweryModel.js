@@ -55,6 +55,11 @@ class Brewery {
         }
     }
   }
+
+  static showRandom() {
+    const randIdx = Math.floor(Math.random() * breweriesData.length);
+    return new Brewery(...Object.values(breweriesData[randIdx]));
+  }
 }
 
 module.exports = Brewery;
