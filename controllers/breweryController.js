@@ -32,4 +32,14 @@ const showRandom = (req, res) => {
   }
 };
 
-module.exports = { index, show, showRandom };
+const search = (req, res) => {
+  const urlParams = req.query;
+  try {
+    const listOfBreweries = Brewery.search(urlParams);
+    res.send(listOfBreweries);
+  } catch (err) {
+    res.status(500).send({ error: 'Error on our end.' });
+  }
+};
+
+module.exports = { index, show, showRandom, search };
