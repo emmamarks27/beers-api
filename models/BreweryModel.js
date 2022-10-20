@@ -44,6 +44,17 @@ class Brewery {
       (brewery) => new Brewery(...Object.values(brewery))
     );
   }
+
+  static show(id) {
+    if (typeof id === 'string' && id.length > 0) {
+        return new Brewery(...Object.values(breweriesData.find(brewery => brewery.id === id)));
+    } else {
+        throw {
+            statusCode: 404,
+            message: "Brewery not found."
+        }
+    }
+  }
 }
 
 module.exports = Brewery;
