@@ -1,4 +1,4 @@
-const Brewery = require('../breweryModel');
+const Brewery = require('../modes/BreweryModel');
 
 const index = (req, res) => {
   try {
@@ -11,4 +11,14 @@ const index = (req, res) => {
   }
 };
 
-module.exports = { index };
+const show = (req, res) => {
+  const idx = req.params.id;
+  try {
+    const brewery = Brewery.show(idx);
+    res.send(brewery);
+  } catch (err) {
+    res.status(500).send({ error: 'Cannot find quote' });
+  }
+};
+
+module.exports = { index, show };
