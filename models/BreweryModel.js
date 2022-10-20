@@ -39,20 +39,28 @@ class Brewery {
     this.created_at = created_at;
   }
 
-  static showAll() {
-    return breweriesData.map(
+  static showAll(params) {
+    let breweries = breweriesData.map(
       (brewery) => new Brewery(...Object.values(brewery))
     );
+    if (params.by_city) {
+      breweries = breweries.filter(
+        (brewery) => brewery.city === params.by_city
+      );
+    }
+    return breweries;
   }
 
   static show(id) {
     if (typeof id === 'string' && id.length > 0) {
-        return new Brewery(...Object.values(breweriesData.find(brewery => brewery.id === id)));
+      return new Brewery(
+        ...Object.values(breweriesData.find((brewery) => brewery.id === id))
+      );
     } else {
-        throw {
-            statusCode: 404,
-            message: "Brewery not found."
-        }
+      throw {
+        statusCode: 404,
+        message: 'Brewery not found.',
+      };
     }
   }
 
