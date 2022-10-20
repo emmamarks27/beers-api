@@ -1,4 +1,5 @@
 const breweriesData = require('../breweryDB');
+const { toSnakeCase } = require('./helper-functions');
 
 class Brewery {
   constructor(breweryData) {
@@ -26,9 +27,7 @@ class Brewery {
         (brewery) => new Brewery(brewery)
     );
     if (params.by_city) {
-      breweries = breweries.filter(
-        (brewery) => brewery.city === params.by_city
-      );
+      breweries = breweries.filter((brewery) => toSnakeCase(brewery.city) === params.by_city);
     }
     return breweries;
   }
