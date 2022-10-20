@@ -22,7 +22,7 @@ class Brewery {
     }
 
     static showAll() {
-        return breweriesData.map(brewery => new Brewery(...brewery));
+        return breweriesData.map(brewery => new Brewery(...Object.values(brewery)));
     }
 }
 

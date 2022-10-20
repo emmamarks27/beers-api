@@ -1,4 +1,4 @@
-const Brewery = require('../breweryModel');
+const Brewery = require('../models/BreweryModel');
 
 const index = (req, res) => {
   try {
