@@ -21,4 +21,13 @@ const show = (req, res) => {
   }
 };
 
-module.exports = { index, show };
+const showRandom = (req, res) => {
+  try {
+    const brewery = Brewery.showRandom();
+    res.send(brewery);
+  } catch (err) {
+    res.status(500).send({ error: 'Error on our end' });
+  }
+};
+
+module.exports = { index, show, showRandom };
