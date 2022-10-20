@@ -14,12 +14,12 @@ const index = (req, res) => {
 };
 
 const show = (req, res) => {
-  const idx = req.params.id;
+  const id = req.params.id;
   try {
-    const brewery = Brewery.show(idx);
+    const brewery = Brewery.show(id);
     res.send(brewery);
   } catch (err) {
-    res.status(500).send({ error: 'Cannot find quote' });
+    res.status(500).send({ error: 'Cannot find brewery' });
   }
 };
 

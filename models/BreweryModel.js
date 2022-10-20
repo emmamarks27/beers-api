@@ -48,6 +48,19 @@ class Brewery {
     const randIdx = Math.floor(Math.random() * breweriesData.length);
     return new Brewery(breweriesData[randIdx]);
   }
+
+  static search(params) {
+    let breweries = breweriesData.map(
+        (brewery) => new Brewery(brewery)
+    );
+
+    if (params.query) {
+      breweries = breweries.filter(
+        (brewery) => RegExp(params.query).test(brewery.id)
+      );
+    }
+    return breweries;
+  }
 }
 
 module.exports = Brewery;
